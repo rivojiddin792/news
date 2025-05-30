@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Mentor | News homepage</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #000;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      width: 40px;
+    }
+
+    .right-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn {
+      display: flex;
+      gap: 20px;
+    }
+
+    .buttons {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .buttons:hover {
+      color: hsl(5, 85%, 63%);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      border-radius: 2px;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    .main img {
+      width: 100%;
+      height: auto;
+    }
+
+    .main-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .web3-content {
+      display: flex;
+      gap: 30px;
+    }
+
+    .text {
+      flex: 1;
+    }
+
+    .text h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+
+    .text-2 {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .d-text-2 {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .read {
+      background-color: hsl(5, 85%, 63%);
+      color: black;
+      border: none;
+      padding: 12px 25px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .read:hover {
+      background-color: hsl(240, 100%, 5%);
+      color: #fff;
+      transition: 1 ease-out;
+    }
+
+    .new {
+      background-color: hsl(240, 100%, 5%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 320px;
+      height: 450px;
+    }
+
+    .new h1 {
+      color: hsl(35, 77%, 62%);
+      font-size: 2rem;
+    }
+
+    .new h3 {
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .new h3:hover {
+      color: hsl(35, 77%, 62%);
+    }
+
+    .new p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    hr {
+      border: 1px solid #444;
+    }
+
+    .footer {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer > div {
+      display: flex;
+      gap: 15px;
+      flex: 1;
+    }
+
+    .footer img {
+      width: 100px;
+    }
+
+    .foot-text h2 {
+      color: hsl(233, 8%, 79%);
+      font-size: 1.5rem;
+    }
+
+    .foot-text h5 {
+      font-size: 1rem;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    .foot-text h5:hover {
+      color: hsl(5, 85%, 63%);
+      transition: 0.7 ease-in-out;
+    }
+
+    .foot-text p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+
+      .right-header {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .btn {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .btn.active {
+        display: flex;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+
+      .footer > div {
+        flex-direction: row;
+      }
+
+      .web3-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="./assets/images/logo.svg" alt="Logo" />
+      </div>
+      <div class="right-header">
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="btn" id="nav-menu">
+          <button class="buttons">Home</button>
+          <button class="buttons">New</button>
+          <button class="buttons">Popular</button>
+          <button class="buttons">Trending</button>
+          <button class="buttons">Categories</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="main-left">
+        <img src="./assets/images/image-web-3-desktop.jpg" alt="Web 3 image" style="width: 100%; height: 300px; max-width: 1000px;" />
+        <div class="web3-content">
+          <div class="text">
+            <h1>The Bright Future of Web 3.0?</h1>
+          </div>
+          <div class="text-2">
+            <p class="d-text-2">
+              We dive into the next evolution of the web that claims to put the power of the platforms back into the
+              hands of the people. But is it really fulfilling its promise?
+            </p>
+            <button class="read">Read more</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="new">
+        <h1>New</h1>
+        <h3>Hydrogen VS Electric Cars</h3>
+        <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+        <hr />
+        <h3>The Downsides of AI Artistry</h3>
+        <p>What are the possible adverse effects of on-demand AI image generation?</p>
+        <hr />
+        <h3>Is VC Funding Drying Up?</h3>
+        <p>Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="foot-1">
+        <img src="./assets/images/image-retro-pcs.jpg" alt="retro pcs" />
+        <div class="foot-text">
+          <h2>01</h2>
+          <h5>Reviving Retro PCs</h5>
+          <p>What happens when old PCs are given modern upgrades?</p>
+        </div>
+      </div>
+
+      <div class="foot-2">
+        <img src="./assets/images/image-top-laptops.jpg" alt="top Laptops" />
+        <div class="foot-text">
+          <h2>02</h2>
+          <h5>Top 10 Laptops of 2022</h5>
+          <p>Our best picks for various needs and budgets.</p>
+        </div>
+      </div>
+
+      <div class="foot-3">
+        <img src="./assets/images/image-gaming-growth.jpg" alt="Gaming Growth" />
+        <div class="foot-text">
+          <h2>03</h2>
+          <h5>The Growth of Gaming</h5>
+          <p>How the pandemic has sparked fresh opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("nav-menu");
+
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>
