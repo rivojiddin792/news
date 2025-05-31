@@ -190,7 +190,7 @@ hr {
 }
 
 .foot-text h5:hover {
-  color: hsl(5, 85%, 63%);
+  color: grey;
   transition: 0.7 ease-in-out;
 }
 
